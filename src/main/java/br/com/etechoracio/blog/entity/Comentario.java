@@ -9,16 +9,19 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "TBL_POST")
-public class Post {
+@Table(name = "TBL_COMENTARIO")
+public class Comentario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_POST")
+    @Column(name = "ID_COMENTARIO")
     private Long id;
-    @Column(name = "TX_TITULO")
-    private String titulo;
     @Column(name = "TX_CONTEUDO")
     private String conteudo;
+    @Column(name = "TX_AUTOR")
+    private String autor;
     @Column(name = "DT_CRIACAO")
     private LocalDateTime dataCriacao;
+    @ManyToOne
+    @JoinColumn(name = "ID_POST")
+    private Post idPost;
 }
